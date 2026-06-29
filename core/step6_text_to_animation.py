@@ -180,11 +180,11 @@ def generate_vsl_animation(text_or_list, csv_path="data/processed_data/skeleton_
     ax.axis('off') # Ẩn trục tọa độ
     
     # Chuẩn bị các nét vẽ (tăng độ dày nét vẽ)
-    body_lines = [ax.plot([], [], '#00bfff', lw=5, solid_capstyle='round')[0] for _ in BODY_LINKS]
-    face_lines = [ax.plot([], [], '#00bfff', lw=4, solid_capstyle='round')[0] for _ in FACE_LINKS]
-    # Trả về độ dày nét vẽ bàn tay ban đầu (lw=3)
-    lh_lines = [ax.plot([], [], '#ff4d4d', lw=3, solid_capstyle='round')[0] for _ in HAND_LINKS]
-    rh_lines = [ax.plot([], [], '#33cc33', lw=3, solid_capstyle='round')[0] for _ in HAND_LINKS]
+    body_lines = [ax.plot([], [], '#00bfff', lw=5, solid_capstyle='round', zorder=2)[0] for _ in BODY_LINKS]
+    face_lines = [ax.plot([], [], '#00bfff', lw=4, solid_capstyle='round', zorder=3)[0] for _ in FACE_LINKS]
+    # Thiết lập zorder=10 cho bàn tay để đảm bảo tay luôn vẽ đè lên trên mặt và thân (không bị mặt che)
+    lh_lines = [ax.plot([], [], '#ff4d4d', lw=3, solid_capstyle='round', zorder=10)[0] for _ in HAND_LINKS]
+    rh_lines = [ax.plot([], [], '#33cc33', lw=3, solid_capstyle='round', zorder=10)[0] for _ in HAND_LINKS]
     
     # Chuẩn bị vẽ khớp và khuôn mặt (scatter)
     face_scatter = ax.scatter([], [], c='#ffff00', s=80, zorder=5, edgecolors='black', lw=1)
