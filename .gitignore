@@ -1,0 +1,31 @@
+# Thư mục môi trường ảo
+venv/
+.venv/
+env/
+ENV/
+
+# Python cache & build files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.ipynb_checkpoints/
+
+# File mô hình AI và weights quá lớn (vượt giới hạn 100MB của GitHub)
+core/vsl_model.pkl
+yolov8n-pose.pt
+
+# File dữ liệu CSV thô/đã xử lý có kích thước lớn (> 400MB)
+data/processed_data/skeleton_data.csv
+data/processed_data/skeleton_data_normalized.csv
+
+# Các file sinh ra tạm thời trong quá trình chạy web
+vsl_web/media/animations/
+*.gif
+*.mp4
+
+# Các file cấu hình của IDE
+.vscode/
+.idea/
+.agents/
