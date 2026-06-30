@@ -126,7 +126,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Qwen LLM settings for Vietnamese-to-VSL translation
-QWEN_MODE = 'local'  # Options: 'api' (Hugging Face API), 'local' (offline CPU), 'none' (bypass to MFM)
+QWEN_MODE = 'none'  # Options: 'api' (Hugging Face API), 'local' (offline CPU), 'none' (bypass to MFM)
 QWEN_MODEL_NAME = 'Qwen/Qwen2.5-0.5B-Instruct'  # Local fallback: 'Qwen/Qwen2.5-0.5B-Instruct'
 HF_API_TOKEN = ''  # Add your Hugging Face Token here if needed to avoid rate limits
 
