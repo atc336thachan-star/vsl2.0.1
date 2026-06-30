@@ -83,12 +83,12 @@ def translate_text(request):
         # Thử dịch câu bằng Qwen LLM
         matched_tokens = []
         
-        # Đường truyền nhanh (Fast Path): So khớp trực tiếp từ/cụm từ trong từ điển trước
-        norm_text = remove_accents(text).lower()
+        # Đường truyền nhanh (Fast Path): So khớp trực tiếp từ/cụm từ trong từ điển trước (bỏ qua khoảng trắng và gạch dưới để khớp chính xác hơn, ví dụ 'Ti vi' khớp với 'Tivi')
+        norm_text = remove_accents(text).replace(' ', '').replace('_', '').lower()
         vocab_objs = Vocab.objects.all()
         vocab_map = {}
         for v in vocab_objs:
-            norm_key = remove_accents(v.word).replace('_', ' ').lower()
+            norm_key = remove_accents(v.word).replace(' ', '').replace('_', '').lower()
             vocab_map[norm_key] = v.word
             
         if norm_text in vocab_map:
